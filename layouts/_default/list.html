@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h2 class="page-title">All Notes</h2>
+
+<section class="recent-notes">
+    {{ range .Pages }}
+    <div class="note-item">
+        <a href="{{ .Permalink }}">
+            <span class="note-date">{{ .Date.Format "2006 · 01" }}</span>
+            <span class="note-title-link">{{ .Title }}</span>
+        </a>
+    </div>
+    {{ end }}
+</section>
+{{ end }}

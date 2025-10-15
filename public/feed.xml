@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shawn&#39;s Notes</title>
+    <link>http://localhost:1316/</link>
+    <description>Recent content on Shawn&#39;s Notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1316/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About This Site</title>
+      <link>http://localhost:1316/about/</link>
+      <pubDate>Sun, 12 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/about/</guid>
+      <description>&lt;p&gt;This is my workshop. A place for notes, half-formed ideas, and thinking in public. Finished essays are at &lt;a href=&#34;https://shawnyeager.com&#34;&gt;shawnyeager.com&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;why-two-sites&#34;&gt;Why Two Sites?&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;shawnyeager.org&lt;/strong&gt; — The workshop. Rough notes, explorations, and building in public.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;shawnyeager.com&lt;/strong&gt; — The gallery. Finished work.&lt;/p&gt;&#xA;&lt;p&gt;Most thinking happens in private notebooks. This is mine, made public. The workshop feeds the gallery. Not everything needs to graduate.&lt;/p&gt;&#xA;&lt;h3 id=&#34;whats-here&#34;&gt;What&amp;rsquo;s Here?&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Notes and observations&lt;/li&gt;&#xA;&lt;li&gt;Questions I&amp;rsquo;m wrestling with&lt;/li&gt;&#xA;&lt;li&gt;Half-formed ideas being explored&lt;/li&gt;&#xA;&lt;li&gt;Concepts I&amp;rsquo;m working through&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;not-indexed&#34;&gt;Not Indexed&lt;/h3&gt;&#xA;&lt;p&gt;This site is public but intentionally blocked from search engines. You can share the link with anyone, but it won&amp;rsquo;t appear in Google searches. This creates space to explore ideas freely.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bitcoin sales requires longer education cycles</title>
+      <link>http://localhost:1316/note-1/</link>
+      <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/note-1/</guid>
+      <description>&lt;p&gt;Working with Bitcoin companies, I keep seeing the same pattern: sales teams try to apply traditional SaaS playbooks and wonder why their pipeline stalls.&lt;/p&gt;&#xA;&lt;p&gt;The problem isn&amp;rsquo;t execution. It&amp;rsquo;s that Bitcoin sales starts further back in the buyer&amp;rsquo;s journey than most realize.&lt;/p&gt;&#xA;&lt;p&gt;In traditional SaaS, prospects understand the problem you&amp;rsquo;re solving. They&amp;rsquo;re comparing your solution to competitors or evaluating whether to build vs. buy. The education is about &lt;em&gt;your product&lt;/em&gt;, not the underlying technology.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trust paradox in decentralized systems</title>
+      <link>http://localhost:1316/note-2/</link>
+      <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/note-2/</guid>
+      <description>&lt;p&gt;Bitcoin is designed to minimize trust. That&amp;rsquo;s the whole point — trustless, permissionless, decentralized.&lt;/p&gt;&#xA;&lt;p&gt;But selling Bitcoin solutions requires building enormous amounts of trust.&lt;/p&gt;&#xA;&lt;p&gt;You&amp;rsquo;re asking companies to reconsider their entire monetary infrastructure. To custody assets in ways that feel uncomfortable. To adopt technology that their compliance team is nervous about. To work with startups instead of established vendors.&lt;/p&gt;&#xA;&lt;p&gt;This paradox creates interesting challenges for go-to-market strategy. You can&amp;rsquo;t just run traditional enterprise sales plays. The technology says &amp;ldquo;don&amp;rsquo;t trust us&amp;rdquo; but successful adoption requires deep trust relationships.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why partnership frameworks fail for Bitcoin companies</title>
+      <link>http://localhost:1316/note-3/</link>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/note-3/</guid>
+      <description>&lt;p&gt;Most partnership frameworks assume you&amp;rsquo;re working with established categories and known business models.&lt;/p&gt;&#xA;&lt;p&gt;Bitcoin breaks these assumptions.&lt;/p&gt;&#xA;&lt;p&gt;Traditional partnership plays:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Channel partnerships require standardized pricing and packaging&lt;/li&gt;&#xA;&lt;li&gt;Integration partnerships assume stable APIs and predictable roadmaps&lt;/li&gt;&#xA;&lt;li&gt;Co-marketing partnerships need clear ICP overlap&lt;/li&gt;&#xA;&lt;li&gt;Reseller partnerships want proven deal velocity&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Bitcoin companies often can&amp;rsquo;t deliver on these prerequisites because:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Categories are still forming&lt;/strong&gt; — Is your product custody? Infrastructure? Payments? All three?&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Business models are evolving&lt;/strong&gt; — SaaS pricing doesn&amp;rsquo;t work when you&amp;rsquo;re dealing with network effects and transaction economics&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

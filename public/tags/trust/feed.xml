@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trust on Shawn&#39;s Notes</title>
+    <link>http://localhost:1316/tags/trust/</link>
+    <description>Recent content in Trust on Shawn&#39;s Notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1316/tags/trust/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trust paradox in decentralized systems</title>
+      <link>http://localhost:1316/note-2/</link>
+      <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/note-2/</guid>
+      <description>&lt;p&gt;Bitcoin is designed to minimize trust. That&amp;rsquo;s the whole point — trustless, permissionless, decentralized.&lt;/p&gt;&#xA;&lt;p&gt;But selling Bitcoin solutions requires building enormous amounts of trust.&lt;/p&gt;&#xA;&lt;p&gt;You&amp;rsquo;re asking companies to reconsider their entire monetary infrastructure. To custody assets in ways that feel uncomfortable. To adopt technology that their compliance team is nervous about. To work with startups instead of established vendors.&lt;/p&gt;&#xA;&lt;p&gt;This paradox creates interesting challenges for go-to-market strategy. You can&amp;rsquo;t just run traditional enterprise sales plays. The technology says &amp;ldquo;don&amp;rsquo;t trust us&amp;rdquo; but successful adoption requires deep trust relationships.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

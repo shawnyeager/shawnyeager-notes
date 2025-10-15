@@ -1,0 +1,10 @@
+<section class="site-footer">
+    <div class="site-footer-inner">
+        <div class="footer-links">
+            {{ with .Site.Params.nostr }}<a href="{{ . }}">Nostr</a>{{ end }}
+            {{ with .Site.Params.github }}<a href="{{ . }}">GitHub</a>{{ end }}
+            {{ with .Site.Params.primary_site_url }}<a href="{{ . }}">{{ $.Site.Params.primary_site_name }} <span aria-hidden="true">→</span></a>{{ end }}
+            {{ with .Site.Params.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+        </div>
+    </div>
+</section>

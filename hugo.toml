@@ -1,0 +1,126 @@
+# Hugo Configuration for shawnyeager.org
+# Personal notes site - The Workshop (building in public)
+# Version 1.0 - October 2025
+
+baseURL = "https://shawnyeager.org/"
+languageCode = "en-us"
+title = "Shawn's Notes"
+defaultContentLanguage = "en"
+
+# Enable emoji support
+enableEmoji = true
+
+# Hugo Module - Theme
+[module]
+  [[module.imports]]
+    path = "/home/shawn/Work/shawnyeager-theme"  # Local path for testing
+
+# Pagination
+[pagination]
+  pagerSize = 25
+
+# Permalinks - clean URLs without dates
+# Remove :section to avoid /notes/notes/ duplication
+[permalinks]
+  notes = "/:contentbasename/"
+
+# Taxonomies - matches frontmatter usage (topics: [...])
+[taxonomies]
+  topic = "topics"
+  tag = "tags"
+
+# Output formats - Generate RSS but don't link to it in footer
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+
+# RSS configuration
+[outputFormats.RSS]
+  mediaType = "application/rss+xml"
+  baseName = "feed"
+
+# Site parameters
+[params]
+  description = "Building in public - notes and explorations"
+  author = "Shawn Yeager"
+  email = "hello@shawnyeager.com"
+  
+  # Custom CSS
+  custom_css = ["css/custom.css"]
+
+  # Social/contact links
+  nostr = "https://nostr.shawnyeager.com"
+  github = "https://github.com/shawnyeager"
+  
+  # Primary site link (back to .com)
+  primary_site_url = "https://shawnyeager.com"
+  primary_site_name = "Essays"
+
+# Menu configuration
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Notes"
+  url = "/notes/"
+  weight = 2
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 3
+
+# Image processing (requires Hugo Extended)
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+  anchor = "Smart"
+
+[imaging.exif]
+  disableDate = false
+  disableLatLong = true           # Remove location data from images
+
+# Markdown configuration
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true                # Allow HTML in markdown
+  
+  [markup.highlight]
+    style = "monokailight"
+    lineNos = false
+    lineNumbersInTable = false
+
+# Privacy configuration
+[privacy]
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# Security
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+# Build configuration
+[build]
+  writeStats = true
+
+# Cache configuration
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = "24h"
+  [caches.getcsv]
+    dir = ":cacheDir/:project"
+    maxAge = "24h"
+  [caches.images]
+    dir = ":cacheDir/:project"
+    maxAge = -1
+  [caches.assets]
+    dir = ":cacheDir/:project"
+    maxAge = -1

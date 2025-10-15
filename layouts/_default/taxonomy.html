@@ -1,0 +1,20 @@
+{{ define "main" }}
+<h2 class="page-title">Notes tagged: {{ .Title }}</h2>
+
+<section class="recent-notes">
+    {{ range .Pages }}
+    <div class="note-item">
+        <a href="{{ .Permalink }}">
+            <span class="note-date">{{ .Date.Format "2006 · 01" }}</span>
+            <span class="note-title-link">{{ .Title }}</span>
+        </a>
+    </div>
+    {{ end }}
+</section>
+
+<div class="back-link-wrapper">
+    <a href="{{ "/" | relURL }}" class="note-back-link">
+        <span aria-hidden="true">←</span> All notes
+    </a>
+</div>
+{{ end }}

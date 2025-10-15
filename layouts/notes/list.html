@@ -1,0 +1,25 @@
+{{ define "main" }}
+<h2 class="page-title">{{ .Title }}</h2>
+
+<section class="recent-notes">
+    {{ range .Paginator.Pages }}
+    <div class="note-item">
+        <a href="{{ .Permalink }}">
+            <span class="note-date">{{ .Date.Format "2006 · 01" }}</span>
+            <span class="note-title-link">{{ .Title }}</span>
+        </a>
+    </div>
+    {{ end }}
+</section>
+
+{{ if or .Paginator.HasPrev .Paginator.HasNext }}
+<nav class="pagination">
+    {{ if .Paginator.HasPrev }}
+    <a href="{{ .Paginator.Prev.URL }}" class="pagination-prev"><span aria-hidden="true">←</span> Newer</a>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}" class="pagination-next">Older <span aria-hidden="true">→</span></a>
+    {{ end }}
+</nav>
+{{ end }}
+{{ end }}

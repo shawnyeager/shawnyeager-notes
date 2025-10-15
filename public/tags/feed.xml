@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Shawn&#39;s Notes</title>
+    <link>http://localhost:1316/tags/</link>
+    <description>Recent content in Tags on Shawn&#39;s Notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1316/tags/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bitcoin</title>
+      <link>http://localhost:1316/tags/bitcoin/</link>
+      <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/bitcoin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Education</title>
+      <link>http://localhost:1316/tags/education/</link>
+      <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/education/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sales</title>
+      <link>http://localhost:1316/tags/sales/</link>
+      <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/sales/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Paradox</title>
+      <link>http://localhost:1316/tags/paradox/</link>
+      <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/paradox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trust</title>
+      <link>http://localhost:1316/tags/trust/</link>
+      <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/trust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go-to-Market</title>
+      <link>http://localhost:1316/tags/go-to-market/</link>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/go-to-market/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Partnerships</title>
+      <link>http://localhost:1316/tags/partnerships/</link>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1316/tags/partnerships/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

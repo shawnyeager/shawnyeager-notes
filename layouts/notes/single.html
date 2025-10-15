@@ -1,0 +1,23 @@
+{{/*
+REMINDER: Add a description in frontmatter for better social sharing:
+---
+title: "Note Title"
+description: "A brief summary of the note's main idea."
+---
+*/}}
+{{ define "main" }}
+<article class="note-content">
+    <div class="note-meta">
+        {{ .Date.Format "2006 · 01" }}
+    </div>
+    <h1 class="note-title-single">{{ .Title }}</h1>
+
+    <div class="note-body">
+        {{ .Content }}
+    </div>
+
+    <div class="note-back-link">
+        <a href="{{ "notes" | relURL }}"><span aria-hidden="true">←</span> All notes</a>
+    </div>
+</article>
+{{ end }}
