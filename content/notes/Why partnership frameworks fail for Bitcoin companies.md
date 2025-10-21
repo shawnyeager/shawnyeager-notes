@@ -1,11 +1,15 @@
 ---
-title: "Why partnership frameworks fail for Bitcoin companies"
+title: Why partnership frameworks fail for Bitcoin companies
 date: 2025-10-09
+slug: bitcoin-and-partnerships
+topics:
+  - bitcoin
+  - partnerships
+  - strategy
+tags:
+  - note
 draft: false
-topics: ["bitcoin", "partnerships", "strategy"]
-tags: ["partnerships", "bitcoin", "go-to-market"]
 ---
-
 Most partnership frameworks assume you're working with established categories and known business models.
 
 Bitcoin breaks these assumptions.

@@ -1,12 +1,15 @@
 ---
-title: "Trust paradox in decentralized systems"
+title: Trust paradox in decentralized systems
+slug: the-trust-paradox
 date: 2025-10-10
+topics:
+  - bitcoin
+  - trust
+tags:
+  - note
 draft: false
-topics: ["bitcoin", "trust", "decentralization"]
-tags: ["trust", "bitcoin", "paradox"]
 ---
-
-Bitcoin is designed to minimize trust. That's the whole point — trustless, permissionless, decentralized.
+Bitcoin is designed to minimize trust. That's the whole point---trustless, permissionless, decentralized.
 
 But selling Bitcoin solutions requires building enormous amounts of trust.
 

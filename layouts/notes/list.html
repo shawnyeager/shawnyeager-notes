@@ -1,14 +1,18 @@
 {{ define "main" }}
-<h2 class="page-title">{{ .Title }}</h2>
-
 <section class="recent-notes">
+    {{ $lastYear := "" }}
     {{ range .Paginator.Pages }}
-    <div class="note-item">
-        <a href="{{ .Permalink }}">
-            <span class="note-date">{{ .Date.Format "2006 · 01" }}</span>
-            <span class="note-title-link">{{ .Title }}</span>
-        </a>
-    </div>
+        {{ $currentYear := .Date.Format "2006" }}
+        {{ if ne $currentYear $lastYear }}
+            <h3 class="year-heading">{{ $currentYear }}</h3>
+            {{ $lastYear = $currentYear }}
+        {{ end }}
+        <div class="note-item">
+            <a href="{{ .RelPermalink }}">
+                <span class="note-date">{{ .Date.Format "Jan · 02" }}</span>
+                <span class="note-title-link">{{ .Title }}</span>
+            </a>
+        </div>
     {{ end }}
 </section>
 

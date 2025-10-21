@@ -8,14 +8,14 @@
 {{ if $notes }}
 <section class="recent-notes">
     {{ range first 10 $notes }}
-    <div class="note-item">
-        <a href="{{ .Permalink }}">
-            <span class="note-date">{{ .Date.Format "2006 · 01" }}</span>
-            <span class="note-title-link">{{ .Title }}</span>
-        </a>
-    </div>
+        <div class="note-item">
+            <a href="{{ .RelPermalink }}">
+                <span class="note-date">{{ .Date.Format "Jan · 02" }}</span>
+                <span class="note-title-link">{{ .Title }}</span>
+            </a>
+        </div>
     {{ end }}
-    <a href="{{ "notes" | relURL }}" class="all-notes">All notes <span aria-hidden="true">→</span></a>
+    <p><a href="{{ "notes" | relURL }}" class="cta-link">All notes <span aria-hidden="true">→</span></a></p>
 </section>
 {{ else }}
 <section class="recent-notes">

@@ -4,7 +4,7 @@
 <section class="recent-notes">
     {{ range .Pages }}
     <div class="note-item">
-        <a href="{{ .Permalink }}">
+        <a href="{{ .RelPermalink }}">
             <span class="note-date">{{ .Date.Format "2006 · 01" }}</span>
             <span class="note-title-link">{{ .Title }}</span>
         </a>
