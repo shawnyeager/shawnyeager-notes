@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="workshop-intro">
+    This is my workshop. Notes, observations, and half-formed ideas. <a href="{{ "about" | relURL }}">More about this site <span aria-hidden="true">→</span></a>
+</div>
+
+{{ $notes := where .Site.RegularPages "Type" "notes" }}
+{{ $notes = where $notes "Draft" false }}
+{{ if $notes }}
+<section class="recent-notes">
+    {{ range first 10 $notes }}
+        <div class="note-item">
+            <a href="{{ .RelPermalink }}">
+                <span class="note-date">{{ .Date.Format "Jan · 02" }}</span>
+                <span class="note-title-link">{{ .Title }}</span>
+            </a>
+        </div>
+    {{ end }}
+    <p><a href="{{ "notes" | relURL }}" class="cta-link">All notes <span aria-hidden="true">→</span></a></p>
+</section>
+{{ else }}
+<section class="recent-notes">
+    <p>No notes published yet.</p>
+</section>
+{{ end }}
+{{ end }}
