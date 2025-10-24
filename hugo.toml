@@ -54,6 +54,9 @@ enableEmoji = true
   favicon_style = "outlined"      # Favicon style: "solid" or "outlined"
   noindex = true                  # Block search engines (true = block indexing)
 
+  # Analytics
+  plausible_script_id = "pa-oiG9OCidDN7DUXrC9X889"  # Plausible analytics
+
   # Email signup (footer)
   show_email_signup = false       # No email signup on workshop site
 
