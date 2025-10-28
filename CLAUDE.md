@@ -170,6 +170,26 @@ git commit -m "Update about page"
 git push
 ```
 
+## Git Hooks
+
+This repo uses a pre-commit hook to automatically fix smart punctuation in markdown files before commits.
+
+**One-time setup:**
+```bash
+git config core.hooksPath .githooks
+```
+
+**What it fixes automatically:**
+- Curly apostrophes (') → straight apostrophes (')
+- Curly quotes ("") → straight quotes ("")
+- Em dashes (---) → triple hyphens (---)
+- En dashes (--) → double hyphens (--)
+- Ellipsis (...) → three periods (...)
+
+The hook runs on staged `.md` files only. It shows what it fixed and re-stages the changes. This is especially useful when copying notes from Obsidian or other external sources that may contain smart punctuation.
+
+**Note:** The hook prevents CI failures from hardcoded smart punctuation while keeping full visibility into what changed.
+
 ## Design System
 
 **Same as .com** - both sites share the complete design system from the theme.
