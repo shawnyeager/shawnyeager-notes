@@ -1,6 +1,6 @@
-# shawnyeager.org
+# notes.shawnyeager.com
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/68d84b38-f053-46ea-bddd-1dce0c92b393/deploy-status)](https://app.netlify.com/sites/shawnyeager-org/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/68d84b38-f053-46ea-bddd-1dce0c92b393/deploy-status)](https://app.netlify.com/sites/shawnyeager-notes/deploys)
 ![Version](https://img.shields.io/badge/version-v1.0.0-orange)
 
 **The Workshop** — Notes, observations, and work-in-progress ideas.
@@ -8,7 +8,7 @@
 ## About
 
 This is the workshop side of a two-site system:
-- **shawnyeager.org** (this site) — Rough notes and explorations
+- **notes.shawnyeager.com** (this site) — Rough notes and explorations
 - **[shawnyeager.com](https://shawnyeager.com)** — Finished essays
 
 Content here is intentionally not indexed by search engines. It's findable if you know about it, but not promoted.
@@ -48,7 +48,7 @@ Key parameters in `hugo.toml`:
 ## Project Structure
 
 ```
-shawnyeager-org/
+shawnyeager-notes/
 ├── content/
 │   ├── notes/           # All notes (markdown)
 │   └── about.md         # About The Workshop
@@ -94,7 +94,7 @@ git add go.mod go.sum && git commit -m "Update theme to v1.10.7" && git push
    ```
 3. Preview: `hugo server -D -p 1316`
 4. Commit and push: `git push origin master`
-5. Netlify auto-deploys to https://shawnyeager.org
+5. Netlify auto-deploys to https://notes.shawnyeager.com
 
 ## Key Features
 
@@ -111,6 +111,7 @@ The Workshop is for building in public and thinking in public. Notes can be roug
 ---
 
 **Author:** Shawn Yeager
+**Notes:** [notes.shawnyeager.com](https://notes.shawnyeager.com)
 **Essays:** [shawnyeager.com](https://shawnyeager.com)
 **Nostr:** [nostr.shawnyeager.com](https://nostr.shawnyeager.com)
 **GitHub:** [@shawnyeager](https://github.com/shawnyeager)

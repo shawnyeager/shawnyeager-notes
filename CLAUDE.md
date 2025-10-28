@@ -1,4 +1,4 @@
-# shawnyeager.org - The Workshop
+# notes.shawnyeager.com - The Workshop
 
 **Personal notes site for work-in-progress content and thinking in public**
 
@@ -31,7 +31,7 @@ The Workshop: Rough drafts, half-formed ideas, observations, and notes. This is 
 ## Repository Structure
 
 ```
-shawnyeager-org/
+shawnyeager-notes/
 ├── CLAUDE.md                    # This file
 ├── hugo.toml                    # Site configuration
 ├── go.mod                       # Hugo Modules config
@@ -66,7 +66,7 @@ This site imports the shared theme:
 Key settings in `hugo.toml`:
 
 ```toml
-baseURL = "https://shawnyeager.org/"
+baseURL = "https://notes.shawnyeager.com/"
 title = "Shawn's Notes"
 
 [params]
@@ -137,7 +137,7 @@ This ensures notes remain findable but not promoted.
 ### Publishing a New Note
 
 ```bash
-cd ~/Work/shawnyeager-org
+cd ~/Work/shawnyeager-notes
 
 # Create new note
 hugo new content/notes/note-slug.md
@@ -183,7 +183,7 @@ Only differences:
 
 ## Key Differences from .com
 
-| Feature | .org (Workshop) | .com (Gallery) |
+| Feature | notes subdomain (Workshop) | .com (Gallery) |
 |---------|-----------------|----------------|
 | Purpose | Work in progress | Finished work |
 | Date format | Year headings + Oct · 20 | October 15, 2025 |
@@ -217,7 +217,7 @@ Before deploying:
 - Publish directory: `public`
 - Hugo version: 0.151.0 (set in `netlify.toml` or environment)
 
-**Custom domain:** shawnyeager.org
+**Custom domain:** notes.shawnyeager.com
 
 **Deploy:**
 ```bash
@@ -261,7 +261,7 @@ This site embodies "building in public" and "thinking in public":
 - **Low friction**: Minimal frontmatter, simple structure, quick to publish
 - **Outlined favicon**: Visual metaphor for "work in progress" vs .com's "finished work"
 
-The Gallery (.com) is where ideas graduate to after they've been refined here in The Workshop (.org).
+The Gallery (.com) is where ideas graduate to after they've been refined here in The Workshop (notes subdomain).
 
 ## Notes
 

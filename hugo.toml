@@ -1,8 +1,8 @@
-# Hugo Configuration for shawnyeager.org
+# Hugo Configuration for notes.shawnyeager.com
 # Personal notes site - The Workshop (building in public)
 # Version 1.0 - October 2025
 
-baseURL = "https://shawnyeager.org/"
+baseURL = "https://notes.shawnyeager.com/"
 languageCode = "en-us"
 title = "Shawn's Notes"
 defaultContentLanguage = "en"
