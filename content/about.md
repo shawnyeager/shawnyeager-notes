@@ -9,9 +9,9 @@ This is my workshop. A place for notes, half-formed ideas, and thinking in publi
 
 ## Why two sites?
 
-**notes.shawnyeager.com** — The workshop. Rough notes, explorations, and building in public.
+**notes.shawnyeager.com** --- The workshop. Rough notes, explorations, and building in public.
 
-**shawnyeager.com** — The gallery. Finished work.
+**shawnyeager.com** --- The gallery. Finished work.
 
 Most thinking happens in private notebooks. This is mine, made public. The workshop feeds the gallery. Not everything needs to graduate.
 
