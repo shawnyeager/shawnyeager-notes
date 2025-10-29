@@ -6,6 +6,8 @@ on:
     paths:
       - 'content/**/*.md'
       - '*.md'
+      - 'go.mod'
+      - 'go.sum'
 
   # Run on push to master to validate all content
   push:
@@ -14,6 +16,8 @@ on:
     paths:
       - 'content/**/*.md'
       - '*.md'
+      - 'go.mod'
+      - 'go.sum'
 
   # Run weekly on Mondays to catch link rot
   schedule:
@@ -37,3 +41,8 @@ jobs:
       content_path: 'content/notes'
       content_type: 'notes'
       require_description: false
+
+  module-validator:
+    uses: shawnyeager/shared-workflows/.github/workflows/hugo-module-validator.yml@master
+    with:
+      module_path: 'github.com/shawnyeager/tangerine-theme'
