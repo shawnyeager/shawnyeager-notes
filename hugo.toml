@@ -40,17 +40,14 @@ enableEmoji = true
   mediaType = "application/rss+xml"
   baseName = "feed"
 
-# Copyright notice
-copyright = "Copyright © 2025, Shawn Yeager"
-
 # Site parameters
 [params]
+  copyright = "Copyright © 2025, Shawn Yeager"
   description = "Building in public - notes and explorations"
 
-  # Author information (used in RSS feeds)
-  [params.author]
-    name = "Shawn Yeager"
-    email = "hello@shawnyeager.com"
+  # Open Graph image for social sharing (1200x630px)
+  # Outlined orange rectangle distinguishes notes from essays
+  og_image = "/images/og-image.png"
 
   # Custom CSS
   custom_css = ["css/custom.css"]
@@ -70,13 +67,14 @@ copyright = "Copyright © 2025, Shawn Yeager"
   nostr = "https://nostr.shawnyeager.com"
   github = "https://github.com/shawnyeager"
 
-  # Open Graph image for social sharing (1200x630px)
-  # Outlined orange rectangle distinguishes .org from .com
-  og_image = "/images/og-image.png"
-
   # Secondary site link (back to .com)
   secondary_site_url = "https://shawnyeager.com"
   secondary_site_name = "Essays"
+
+  # Author information (used in RSS feeds)
+  [params.author]
+    name = "Shawn Yeager"
+    email = "hello@shawnyeager.com"
 
 # Menu configuration
 [[menu.main]]
