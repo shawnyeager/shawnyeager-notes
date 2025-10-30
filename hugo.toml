@@ -40,11 +40,17 @@ enableEmoji = true
   mediaType = "application/rss+xml"
   baseName = "feed"
 
+# Copyright notice
+copyright = "Copyright © 2025, Shawn Yeager"
+
 # Site parameters
 [params]
   description = "Building in public - notes and explorations"
-  author = "Shawn Yeager"
-  email = "hello@shawnyeager.com"
+
+  # Author information (used in RSS feeds)
+  [params.author]
+    name = "Shawn Yeager"
+    email = "hello@shawnyeager.com"
 
   # Custom CSS
   custom_css = ["css/custom.css"]
