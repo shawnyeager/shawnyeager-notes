@@ -2,6 +2,9 @@
 {{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
 {{- /* Filter to only include notes - exclude standalone pages */ -}}
 {{- $pages := where $pctx.RegularPages "Section" "notes" -}}
+{{- if not hugo.IsServer -}}
+{{- $pages = where $pages "Draft" false -}}
+{{- end -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}

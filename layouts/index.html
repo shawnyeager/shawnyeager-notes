@@ -4,7 +4,9 @@
 </div>
 
 {{ $notes := where .Site.RegularPages "Type" "notes" }}
+{{ if not hugo.IsServer }}
 {{ $notes = where $notes "Draft" false }}
+{{ end }}
 {{ if $notes }}
 <section class="recent-notes">
     {{ range first 10 $notes }}
