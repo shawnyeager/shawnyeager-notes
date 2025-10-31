@@ -1,5 +1,9 @@
 {{ define "main" }}
-<div class="page-body">
-    {{ .Content }}
-</div>
+    <!-- Page Title (smart visibility: show_title frontmatter flag controls display) -->
+    {{ partial "page-title.html" . }}
+
+    <!-- Page Content -->
+    <div class="page-body">
+        {{ .Content }}
+    </div>
 {{ end }}
