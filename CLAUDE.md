@@ -40,9 +40,9 @@ shawnyeager-notes/
 │   └── about.md                 # About The Workshop
 ├── layouts/
 │   ├── index.html               # Simple homepage
-│   └── partials/
-│       ├── head.html            # Outlined favicon override
-│       └── footer.html          # No newsletter override
+│   ├── notes/                   # Note-specific layouts
+│   ├── _default/                # Default layouts
+│   └── partials/                # Partial overrides
 ├── static/                      # Static files (currently empty)
 └── public/                      # Built site (not committed)
 ```
@@ -54,36 +54,73 @@ This site imports the shared theme:
 ```toml
 [module]
   [[module.imports]]
-    path = "github.com/shawnyeager/tangerine-theme"  # Production
-    # path = "/home/shawn/Work/tangerine-theme"      # Local testing
+    path = "github.com/shawnyeager/tangerine-theme"  # Always use GitHub URL
 ```
 
-**For local development:** Use local path
-**For production:** Use GitHub URL
+**Local development:** The `~/Work/hugo.work` file automatically redirects to your local theme directory. No config changes needed! Just edit the theme and changes appear immediately.
+
+**Production (Netlify):** Fetches from GitHub at the version locked in `go.mod`.
 
 ## ⚠️ CRITICAL: Hugo Module Management
 
-**NEVER run `hugo mod tidy` when `/home/shawn/Work/hugo.work` exists!**
+### Why This Matters
 
-The hugo.work workspace file causes `hugo mod tidy` to remove the `require` statement from go.mod because it sees the module as satisfied by the workspace. This breaks Netlify builds which don't have the workspace.
+This site uses Hugo Modules to import the tangerine-theme. A **workspace file** (`/home/shawn/Work/hugo.work`) is set up to redirect module imports locally during development, BUT `hugo mod tidy` removes the `require` statement from go.mod because it sees the module as satisfied by the workspace. This breaks Netlify builds which don't have hugo.work.
 
-**Correct workflow for updating theme version:**
+### Local Development (Current Setup)
 
-```bash
-# To update theme version:
-hugo mod get github.com/shawnyeager/tangerine-theme@v1.18.1
+The workspace is **already configured** at `/home/shawn/Work/hugo.work`. This means:
 
-# Verify go.mod has require line:
-grep "require github.com/shawnyeager/tangerine-theme" go.mod
-
-# NEVER run: hugo mod tidy (in workspace context)
+1. **hugo.toml always uses GitHub URL**:
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/shawnyeager/tangerine-theme"  # Production URL
 ```
 
-**Why this happens:**
-- Local dev uses `/home/shawn/Work/hugo.work` which redirects to local theme
-- `hugo mod tidy` sees module satisfied by workspace and removes require
-- Netlify doesn't have hugo.work, needs go.mod require to fetch from GitHub
-- Result: Netlify builds use wrong version or fail entirely
+2. **hugo.work redirects locally** to `/home/shawn/Work/tangerine-theme` during development
+
+3. **Just run normally**:
+```bash
+hugo server -D -p 1316          # Works with local theme via hugo.work
+hugo --minify                     # Builds with local theme
+```
+
+4. **NEVER run**: `hugo mod tidy` (this removes the require statement!)
+
+### Updating Theme Version
+
+When the theme is updated:
+
+```bash
+# Update to latest version
+hugo mod get github.com/shawnyeager/tangerine-theme@latest
+
+# Verify go.mod updated
+grep "require github.com/shawnyeager/tangerine-theme" go.mod
+
+# Test build locally
+hugo --minify
+
+# Pre-commit hook validates this automatically
+git add go.mod && git commit -m "chore: update tangerine-theme to v1.18.6"
+```
+
+### Why hugo.work Exists
+
+The workspace file allows local development on the theme while keeping the GitHub URL in `hugo.toml`. This solves the critical problem: Netlify doesn't have `hugo.work`, so it needs the explicit `require` statement in go.mod to fetch the theme from GitHub.
+
+- **Local:** hugo.work redirects → local theme at `/home/shawn/Work/tangerine-theme`
+- **Production:** go.mod require → fetches from GitHub
+
+### Troubleshooting
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| `hugo: WARN Module not found` | URL misspelled or version wrong | Check module path spelling in hugo.toml |
+| Netlify build fails but local works | go.mod missing require statement | Run `hugo mod get github.com/shawnyeager/tangerine-theme@latest` |
+| Changes to theme don't appear | Theme not at expected local path | Verify `/home/shawn/Work/tangerine-theme` exists and is up to date |
+| `hugo mod tidy` removes require | Hugo workspace redirecting | Never run `hugo mod tidy` when `/home/shawn/Work/hugo.work` exists |
 
 **Automated safeguards:**
 - Pre-commit hook validates go.mod has theme require
@@ -98,10 +135,14 @@ baseURL = "https://notes.shawnyeager.com/"
 title = "Shawn's Notes"
 
 [params]
+  content_type = "notes"
+  favicon_style = "outlined"      # Outlined square (vs .com's solid)
+  noindex = true                  # Block search engines via meta tag
+  show_email_signup = false       # No newsletter form
   show_read_time = false          # Hide reading time
   description = "Building in public - notes and explorations"
-  primary_site_url = "https://shawnyeager.com"
-  primary_site_name = "Essays"
+  secondary_site_url = "https://shawnyeager.com"
+  secondary_site_name = "Essays"
 
 [taxonomies]
   topic = "topics"                # Browse notes by topic (if used)
@@ -117,6 +158,7 @@ Markdown files with minimal frontmatter:
 ---
 title: "Note Title"
 date: 2025-10-15
+topics: ["bitcoin", "sales"]     # Optional taxonomy
 ---
 
 Note content here...
@@ -136,16 +178,39 @@ This site overrides these theme templates:
 
 1. **`layouts/index.html`**: Simple homepage with:
    - Workshop intro text
-   - Recent notes list (7 items)
+   - Recent notes list
    - Link to "All notes"
 
-2. **`layouts/partials/head.html`**: Outlined orange square favicon (The Workshop metaphor)
+2. **`layouts/notes/list.html`**: Notes index page
 
-3. **`layouts/partials/footer.html`**: No newsletter form, only links:
-   - Nostr
-   - GitHub
-   - Essays → (links to .com)
-   - Email
+3. **`layouts/_default/single.html`**: Single note/page template
+
+4. **`layouts/partials/page-title.html`**: Smart page title visibility logic (see below)
+
+Templates fall back to theme module if not overridden locally.
+
+## Page Title Visibility System
+
+All page templates use the `page-title.html` partial for semantic H1 titles with smart visibility:
+
+**Logic:**
+- **Notes (individual):** Type=notes AND Kind!=section → Show H1 title (visible)
+- **Notes section listing:** Type=notes AND Kind=section → Hide H1 title (sr-only)
+- **Pages (with show_title flag):** Frontmatter `show_title: true` → Show H1 title (visible)
+- **Pages (default):** No show_title flag → Hide H1 title (sr-only)
+
+**In templates:** Use `{{ partial "page-title.html" . }}`
+
+**In frontmatter:** Add `show_title: true` to show page title visually
+
+**Current visible title pages:**
+- Individual notes (automatic via type)
+
+**Current hidden title pages (utility pages):**
+- /notes/ listing (section type)
+- /about (utility page)
+
+**Reference:** See `layouts/partials/page-title.html` for implementation details.
 
 ## Search Engine Blocking
 

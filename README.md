@@ -55,7 +55,8 @@ shawnyeager-notes/
 ├── layouts/             # Template overrides
 │   ├── index.html       # Custom homepage
 │   ├── notes/           # Note-specific layouts
-│   └── _default/        # Default layouts
+│   ├── _default/        # Default layouts
+│   └── partials/        # Partial overrides (page-title, etc)
 ├── hugo.toml            # Site configuration
 ├── go.mod               # Hugo module config
 └── netlify.toml         # Netlify build settings
@@ -71,9 +72,9 @@ Uses Hugo Modules to import the shared [tangerine-theme](https://github.com/shaw
     path = "github.com/shawnyeager/tangerine-theme"
 ```
 
-**Local development:** The `~/Work/hugo.work` file automatically redirects to your local theme directory. No config changes needed! Just edit the theme and changes appear immediately.
+**Local development:** The `~/Work/hugo.work` workspace file automatically redirects the module imports to your local theme directory. No config changes needed! Just edit the theme and changes appear immediately in local servers.
 
-**Production (Netlify):** Fetches from GitHub at the version locked in `go.mod`.
+**Production (Netlify):** Fetches from GitHub at the version locked in `go.mod`. No workspace file exists on Netlify, so the explicit `require` statement in `go.mod` is critical.
 
 **Update theme version:**
 ```bash
@@ -103,6 +104,7 @@ git add go.mod go.sum && git commit -m "Update theme to v1.10.7" && git push
 - **Search blocking**: `noindex` meta tag (controlled via hugo.toml)
 - **Outlined favicon**: Visual metaphor for work-in-progress
 - **Clean permalinks**: `/note-slug/` (no `/notes/notes/` duplication)
+- **Smart page titles**: Semantic H1 with visibility controls (see CLAUDE.md for details)
 
 ## Philosophy
 
@@ -113,5 +115,5 @@ The Workshop is for building in public and thinking in public. Notes can be roug
 **Author:** Shawn Yeager
 **Notes:** [notes.shawnyeager.com](https://notes.shawnyeager.com)
 **Essays:** [shawnyeager.com](https://shawnyeager.com)
-**Nostr:** [nostr.shawnyeager.com](https://nostr.shawnyeager.com)
+**Nostr:** [shawnyeager.com/connect](https://shawnyeager.com/connect)
 **GitHub:** [@shawnyeager](https://github.com/shawnyeager)
