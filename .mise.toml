@@ -3,7 +3,7 @@
 
 [tools]
 # Core tools for builds
-node = "25.0.0"
+node = "latest"
 
 # Note: Hugo version is set in netlify.toml for Netlify builds.
 # For local dev, install Hugo via: mise use -g hugo-extended@0.152.2
