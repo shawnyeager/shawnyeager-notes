@@ -272,8 +272,8 @@ After cloning this repo on a new machine, run:
 ```
 
 This configures:
-- Git hooks path (for pre-commit auto-fixing)
-- Verifies mise tools are installed (node, hugo-extended, markdownlint-cli2)
+- Git hooks (symlinked to shared-workflows/git-hooks/pre-commit)
+- Verifies mise tools are installed (hugo-extended)
 
 **What the pre-commit hook fixes automatically:**
 
@@ -286,16 +286,19 @@ This configures:
 - MD047: Missing trailing newline
 - Plus 25+ other fixable rules (respects `.markdownlint.json`)
 
-*Smart punctuation (custom cleanup):*
+*Smart punctuation (custom cleanup - BODY CONTENT ONLY):*
 - Curly apostrophes (') → straight apostrophes (')
 - Curly quotes ("") → straight quotes ("")
-- Em dashes (---) → triple hyphens (---)
-- En dashes (--) → double hyphens (--)
-- Ellipsis (...) → three periods (...)
+- Em dashes (—) → triple hyphens (---)
+- En dashes (–) → double hyphens (--)
+- Ellipsis (…) → three periods (...)
+- **IMPORTANT:** Frontmatter is NOT modified (preserves smart punctuation in descriptions)
 
-The hook runs on staged `.md` files only, shows what it fixed, and re-stages changes. This is especially useful when copying notes from Obsidian or other external sources.
+The hook runs on staged `.md` files only, skips YAML frontmatter, shows what it fixed in body content, and re-stages changes. This is especially useful when copying notes from Obsidian or other external sources.
 
-**Note:** The hook prevents CI failures from hardcoded smart punctuation while keeping full visibility into what changed.
+**Hook updates are automatic:** The hook is symlinked to shared-workflows. When the shared hook updates, changes apply immediately on your next commit - no need to re-run setup.sh!
+
+**Note:** The hook prevents CI failures from hardcoded smart punctuation in body content while preserving it in frontmatter, keeping full visibility into what changed.
 
 ## Design System
 
