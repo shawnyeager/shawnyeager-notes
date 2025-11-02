@@ -60,10 +60,9 @@ enableEmoji = true
   # Analytics
   plausible_script_id = "pa-oiG9OCidDN7DUXrC9X889"  # Plausible analytics
 
-  # Plausible event tracking configuration (minimal for notes site)
-  [params.plausible_events]
-    contact_email = "Email+Contact"
-    cross_site_nav = "Cross-Site+Navigation"
+  # Plausible event tracking configuration (minimal for notes site, using dotted key notation)
+  plausible_events.contact_email = "Email+Contact"
+  plausible_events.cross_site_nav = "Cross-Site+Navigation"
 
   # Email signup (footer)
   show_email_signup = false       # No email signup on workshop site
