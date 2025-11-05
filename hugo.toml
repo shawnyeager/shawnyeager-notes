@@ -49,9 +49,6 @@ enableEmoji = true
   # Outlined orange rectangle distinguishes notes from essays
   og_image = "/images/og-image.png"
 
-  # Custom CSS
-  custom_css = ["css/custom.css"]
-
   # Theme configuration
   content_type = "notes"          # Content type for parameterized templates
   favicon_style = "outlined"      # Favicon style: "solid" or "outlined"
@@ -67,9 +64,13 @@ enableEmoji = true
   # Email signup (footer)
   show_email_signup = false       # No email signup on workshop site
 
+  # Reading time display
+  show_read_time = false          # Hide reading time on notes (work-in-progress)
+
   # Social/contact links
   nostr = "https://nostr.shawnyeager.com"
   github = "https://github.com/shawnyeager"
+  twitter_handle = "shawnyeager"  # Without @ symbol, used for Twitter Card attribution
 
   # Secondary site link (back to .com)
   secondary_site_url = "https://shawnyeager.com"
