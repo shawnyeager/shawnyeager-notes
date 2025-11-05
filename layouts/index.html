@@ -11,12 +11,10 @@
 <section class="recent-notes">
     {{ range first 10 $notes }}
         <article class="note-item">
-            <header>
+            <a href="{{ .RelPermalink }}">
                 <time datetime="{{ .Date.Format "2006-01-02" }}" class="note-date">{{ .Date.Format "Jan · 02" }}</time>
-            </header>
-            <h3 class="note-title-link">
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            </h3>
+                <span class="note-title">{{ .Title }}</span>
+            </a>
         </article>
     {{ end }}
     <p><a href="{{ "notes" | relURL }}" class="cta-link">All notes <span aria-hidden="true">→</span></a></p>
