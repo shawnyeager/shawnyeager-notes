@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="workshop-intro">
+<div class="notes-homepage-intro">
     This is my workshop. Notes, observations, and half-formed ideas. <a href="{{ "about" | relURL }}">More about this site <span aria-hidden="true">→</span></a>
 </div>
 
@@ -9,6 +9,7 @@
 {{ end }}
 {{ if $notes }}
 <section class="recent-notes">
+    <h2 class="section-label-small">Recent Notes</h2>
     {{ range first 10 $notes }}
         <article class="note-item">
             <a href="{{ .RelPermalink }}">
@@ -21,6 +22,7 @@
 </section>
 {{ else }}
 <section class="recent-notes">
+    <h2 class="section-label-small">Recent Notes</h2>
     <p>No notes published yet.</p>
 </section>
 {{ end }}
