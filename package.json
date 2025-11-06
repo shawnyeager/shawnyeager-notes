@@ -4,7 +4,7 @@
   "description": "Open Graph image generation for shawnyeager.com",
   "type": "module",
   "scripts": {
-    "generate-og": "node scripts/generate-og-images.js"
+    "generate-og": "node ../shared-workflows/scripts/generate-og-images.js . content/notes static/images/og-notes"
   },
   "dependencies": {
     "satori": "^0.10.14",

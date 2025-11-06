@@ -21,9 +21,9 @@ enableEmoji = true
   pagerSize = 25
 
 # Permalinks - clean URLs without dates
-# Remove :section to avoid /notes/notes/ duplication
+# Use slug from frontmatter (falls back to filename if slug not set)
 [permalinks]
-  notes = "/:contentbasename/"
+  notes = "/:slug/"
 
 # Taxonomies - matches frontmatter usage (topics: [...])
 [taxonomies]
