@@ -40,6 +40,24 @@ enableEmoji = true
   mediaType = "application/rss+xml"
   baseName = "feed"
 
+# Sitemap configuration
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+# Exclude tags taxonomy from sitemap via cascade
+[[cascade]]
+  _target.kind = "term"
+  _target.path = "/tags"
+  [cascade.sitemap]
+    disable = true
+
+[[cascade]]
+  _target.kind = "taxonomy"
+  _target.path = "/tags/**"
+  [cascade.sitemap]
+    disable = true
+
 # Site parameters
 [params]
   copyright = "Copyright © 2025, Shawn Yeager"

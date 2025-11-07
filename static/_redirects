@@ -3,7 +3,3 @@
 
 # 301 permanent redirect - preserves path and query parameters
 https://shawnyeager.org/*  https://notes.shawnyeager.com/:splat  301!
-
-# Path redirects
-/tags           /topics         301
-/tags/*         /topics/:splat  301
