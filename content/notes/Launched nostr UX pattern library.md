@@ -11,7 +11,7 @@ tags:
 draft: false
 ---
 
-Yesterday I launched [nostr-ux.com](https://nostr-ux.com). It's opinionated, evidence-based UX research for building Nostr apps that don't lose users.
+Yesterday I [launched](https://primal.net/e/nevent1qqsps42lks7mjwas3cjerr3pck0gd5d8pzng88r0jrfc89t3nszh56c0nk3tr) [nostr-ux.com](https://nostr-ux.com). It's opinionated, evidence-based UX research for building Nostr apps that don't lose users.
 
 Why this exists: Nostr has a retention problem. 30-day retention trends to 0%. We're at ~10k daily active users. Posts disappear and followers vanish when switching apps. Every app feels like beta software.
 
