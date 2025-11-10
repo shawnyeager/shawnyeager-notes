@@ -28,10 +28,10 @@ hugo --minify
 
 ## Tech Stack
 
-- **Hugo** 0.151.0 — Static site generator
+- **Hugo** 0.152.2 — Static site generator
 - **Hugo Modules** — Theme imported from [tangerine-theme](https://github.com/shawnyeager/tangerine-theme)
 - **Netlify** — Automatic deployment on push to master
-- **System fonts** — No external dependencies
+- **Inter variable font** — Provided by theme
 
 ## Configuration
 
@@ -43,23 +43,6 @@ Key parameters in `hugo.toml`:
   favicon_style = "outlined"      # Outlined square (vs .com's solid)
   noindex = true                  # Block search engines via meta tag
   show_email_signup = false       # No newsletter form
-```
-
-## Project Structure
-
-```
-shawnyeager-notes/
-├── content/
-│   ├── notes/           # All notes (markdown)
-│   └── about.md         # About The Workshop
-├── layouts/             # Template overrides
-│   ├── index.html       # Custom homepage
-│   ├── notes/           # Note-specific layouts
-│   ├── _default/        # Default layouts
-│   └── partials/        # Partial overrides (page-title, etc)
-├── hugo.toml            # Site configuration
-├── go.mod               # Hugo module config
-└── netlify.toml         # Netlify build settings
 ```
 
 ## Theme
@@ -78,8 +61,7 @@ Uses the [tangerine-theme](https://github.com/shawnyeager/tangerine-theme) Hugo 
    ---
    ```
 3. Preview: `hugo server -D -p 1316`
-4. Commit and push: `git push origin master`
-5. Netlify auto-deploys to https://notes.shawnyeager.com
+4. Push to master — Netlify builds and deploys automatically
 
 ## Key Features
 
