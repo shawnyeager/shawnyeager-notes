@@ -4,153 +4,84 @@
 
 ---
 
-## ⚠️ CRITICAL RULES
+## About
 
-**ALWAYS USE DESIGN TOKENS - NEVER HARDCODE VALUES**
+**The Workshop** — Rough drafts, half-formed ideas, observations, and notes.
 
-- This site uses the tangerine-theme design system built on CSS custom properties
-- ALWAYS use tokens for colors, spacing, typography, etc.
-- NEVER hardcode pixel values, hex colors, or font weights in templates or styles
-- Theme tokens are defined in `tangerine-theme/static/css/main.css` lines 11-107
-- Examples:
-  - ✅ `font-size: var(--font-lg);`
-  - ❌ `font-size: 18px;`
-  - ✅ `margin-top: var(--space-xl);`
-  - ❌ `margin-top: 32px;`
-  - ✅ `color: var(--text-primary);`
-  - ❌ `color: #1a1a1a;`
-- If a value doesn't have a token, ask before creating overrides
-- Site-specific overrides should be minimal - prefer theme changes
+This is where I think in public. Content is intentionally **NOT indexed by search engines** - it's findable if you know about it, but not promoted.
+
+Sister site to **shawnyeager.com** (The Gallery) where polished essays live.
+
+Built with Hugo using the tangerine-theme module.
 
 ---
 
-## Purpose
-
-The Workshop: Rough drafts, half-formed ideas, observations, and notes. This is where I think in public. Content is intentionally NOT indexed by search engines - it's findable if you know about it, but not promoted.
-
-## Repository Structure
-
-```
-shawnyeager-notes/
-├── CLAUDE.md                    # This file
-├── hugo.toml                    # Site configuration
-├── go.mod                       # Hugo Modules config
-├── content/
-│   ├── notes/                   # Notes and observations
-│   └── about.md                 # About The Workshop
-├── layouts/
-│   ├── index.html               # Simple homepage
-│   ├── notes/                   # Note-specific layouts
-│   ├── _default/                # Default layouts
-│   └── partials/                # Partial overrides
-├── static/                      # Static files (currently empty)
-└── public/                      # Built site (not committed)
-```
-
-## Theme Module
-
-This site imports the shared theme:
-
-```toml
-[module]
-  [[module.imports]]
-    path = "github.com/shawnyeager/tangerine-theme"  # Always use GitHub URL
-```
-
-**Local development:** The `~/Work/hugo.work` file automatically redirects to your local theme directory. No config changes needed! Just edit the theme and changes appear immediately.
-
-**Production (Netlify):** Fetches from GitHub at the version locked in `go.mod`.
-
-## ⚠️ CRITICAL: Hugo Module Management
-
-### Why This Matters
-
-This site uses Hugo Modules to import the tangerine-theme. A **workspace file** (`/home/shawn/Work/hugo.work`) is set up to redirect module imports locally during development, BUT `hugo mod tidy` removes the `require` statement from go.mod because it sees the module as satisfied by the workspace. This breaks Netlify builds which don't have hugo.work.
-
-### Local Development (Current Setup)
-
-The workspace is **already configured** at `/home/shawn/Work/hugo.work`. This means:
-
-1. **hugo.toml always uses GitHub URL**:
-```toml
-[module]
-  [[module.imports]]
-    path = "github.com/shawnyeager/tangerine-theme"  # Production URL
-```
-
-2. **hugo.work redirects locally** to `/home/shawn/Work/tangerine-theme` during development
-
-3. **Just run normally**:
-```bash
-hugo server -D -p 1316          # Works with local theme via hugo.work
-hugo --minify                     # Builds with local theme
-```
-
-4. **NEVER run**: `hugo mod tidy` (this removes the require statement!)
-
-### Updating Theme Version
-
-When the theme is updated:
+## Quick Start
 
 ```bash
-# Update to latest version
-hugo mod get github.com/shawnyeager/tangerine-theme@latest
+# Local development
+hugo server -D -p 1316
 
-# Verify go.mod updated
-grep "require github.com/shawnyeager/tangerine-theme" go.mod
+# Create new note
+hugo new content/notes/note-slug.md
 
-# Test build locally
+# Build for production
 hugo --minify
-
-git add go.mod && git commit -m "chore: update tangerine-theme to v1.18.6"
 ```
 
-### Why hugo.work Exists
+---
 
-The workspace file allows local development on the theme while keeping the GitHub URL in `hugo.toml`. This solves the critical problem: Netlify doesn't have `hugo.work`, so it needs the explicit `require` statement in go.mod to fetch the theme from GitHub.
+## Design System
 
-- **Local:** hugo.work redirects → local theme at `/home/shawn/Work/tangerine-theme`
-- **Production:** go.mod require → fetches from GitHub
+**Always use design tokens, never hardcode values:**
 
-### Troubleshooting
+- ✅ `font-size: var(--font-lg);` ❌ `font-size: 18px;`
+- ✅ `margin-top: var(--space-xl);` ❌ `margin-top: 32px;`
+- ✅ `color: var(--text-primary);` ❌ `color: #1a1a1a;`
 
-| Problem | Cause | Fix |
-|---------|-------|-----|
-| `hugo: WARN Module not found` | URL misspelled or version wrong | Check module path spelling in hugo.toml |
-| Netlify build fails but local works | go.mod missing require statement | Run `hugo mod get github.com/shawnyeager/tangerine-theme@latest` |
-| Changes to theme don't appear | Theme not at expected local path | Verify `/home/shawn/Work/tangerine-theme` exists and is up to date |
-| `hugo mod tidy` removes require | Hugo workspace redirecting | Never run `hugo mod tidy` when `/home/shawn/Work/hugo.work` exists |
+Theme tokens defined in tangerine-theme. If a value doesn't have a token, ask before hardcoding.
 
-**Content Validation:**
-All content quality checks (markdown linting, link checking, frontmatter validation) run automatically in GitHub Actions on every push. No local setup required.
+---
 
 ## Site Configuration
 
-Key settings in `hugo.toml`:
+Key parameters in `hugo.toml`:
 
 ```toml
-baseURL = "https://notes.shawnyeager.com/"
-title = "Shawn's Notes"
-
 [params]
   content_type = "notes"
   favicon_style = "outlined"      # Outlined square (vs .com's solid)
-  noindex = true                  # Block search engines via meta tag
+  noindex = true                  # ⚠️ CRITICAL: Block search engines
   show_email_signup = false       # No newsletter form
   show_read_time = false          # Hide reading time
-  description = "Building in public - notes and explorations"
   secondary_site_url = "https://shawnyeager.com"
   secondary_site_name = "Essays"
 
 [taxonomies]
-  topic = "topics"                # Browse notes by topic (if used)
+  topic = "topics"
 ```
 
-## Content Structure
+---
 
-### Notes (`content/notes/`)
+## ⚠️ CRITICAL: Search Engine Blocking
 
-Markdown files with minimal frontmatter:
+**This site MUST remain blocked from search engines.**
+
+The `noindex = true` parameter generates:
+```html
+<meta name="robots" content="noindex, nofollow">
+```
+
+**Always verify after deployment:**
+1. View page source
+2. Check for robots meta tag in `<head>`
+3. Confirm no newsletter form appears
+
+This ensures notes remain findable (via direct link) but not promoted (not in search results).
+
+---
+
+## Notes Frontmatter
 
 ```yaml
 ---
@@ -158,207 +89,115 @@ title: "Note Title"
 date: 2025-10-15
 topics: ["bitcoin", "sales"]     # Optional taxonomy
 ---
-
-Note content here...
 ```
 
+Notes use minimal frontmatter - no description field required (unlike essays on .com).
+
 **Date format on site:**
-- **Lists:** Year headings with `Oct · 20` format for notes
+- **Lists:** Year headings with `Oct · 20` format
 - **Single pages:** `October 20, 2025` (full spelled-out date)
 
-### Special Pages
+---
 
-- **`about.md`**: Explains the Gallery/Workshop philosophy
+## Page Title Visibility
+
+This site uses smart page title visibility. Individual notes show H1 titles, while utility pages hide them (sr-only for accessibility).
+
+**Visible title pages:**
+- Individual notes (automatic)
+
+**Hidden title pages (sr-only):**
+- /notes/ listing
+- /about (utility page)
+
+To show a page title: add `show_title: true` to frontmatter.
+
+---
 
 ## Template Overrides
 
-This site overrides these theme templates:
+This site overrides these theme templates in `layouts/`:
 
-1. **`layouts/index.html`**: Simple homepage with:
-   - Workshop intro text
-   - Recent notes list
-   - Link to "All notes"
+- `index.html` - Simple homepage (workshop intro, recent notes)
+- `notes/list.html` - Notes index page
+- `_default/single.html` - Single note/page template
+- `partials/page-title.html` - Page title visibility logic
 
-2. **`layouts/notes/list.html`**: Notes index page
+Templates fall back to tangerine-theme if not overridden locally.
 
-3. **`layouts/_default/single.html`**: Single note/page template
-
-4. **`layouts/partials/page-title.html`**: Smart page title visibility logic (see below)
-
-Templates fall back to theme module if not overridden locally.
-
-## Page Title Visibility System
-
-All page templates use the `page-title.html` partial for semantic H1 titles with smart visibility:
-
-**Logic:**
-- **Notes (individual):** Type=notes AND Kind!=section → Show H1 title (visible)
-- **Notes section listing:** Type=notes AND Kind=section → Hide H1 title (sr-only)
-- **Pages (with show_title flag):** Frontmatter `show_title: true` → Show H1 title (visible)
-- **Pages (default):** No show_title flag → Hide H1 title (sr-only)
-
-**In templates:** Use `{{ partial "page-title.html" . }}`
-
-**In frontmatter:** Add `show_title: true` to show page title visually
-
-**Current visible title pages:**
-- Individual notes (automatic via type)
-
-**Current hidden title pages (utility pages):**
-- /notes/ listing (section type)
-- /about (utility page)
-
-**Reference:** See `layouts/partials/page-title.html` for implementation details.
-
-## Search Engine Blocking
-
-**Critical:** Search engines are blocked via the `noindex` parameter in `hugo.toml`:
-
-```toml
-[params]
-  noindex = true  # Blocks search engines via robots meta tag
-```
-
-The theme generates `<meta name="robots" content="noindex, nofollow">` when this is set to `true`.
-
-This ensures notes remain findable but not promoted.
-
-## Common Tasks
-
-### Publishing a New Note
-
-```bash
-cd ~/Work/shawnyeager-notes
-
-# Create new note
-hugo new content/notes/note-slug.md
-
-# Edit the file
-# Add title, date
-# Write content (can be rough!)
-
-# Preview locally
-hugo server -D -p 1316
-# View at http://localhost:1316
-
-# Build
-hugo --minify
-
-# Deploy (push to GitHub, Netlify builds automatically)
-git add content/notes/note-slug.md
-git commit -m "Add note: Title"
-git push
-```
-
-### Updating About Page
-
-```bash
-# Edit content/about.md
-
-hugo --minify
-git add content/about.md
-git commit -m "Update about page"
-git push
-```
-
-
-## Design System
-
-**Same as .com** - both sites share the complete design system from the theme.
-
-Only differences:
-- Date format: Year headings + Oct · 20 vs Full spelled-out
-- No reading time shown
-- Simpler homepage
-- No newsletter form in footer
-- Outlined favicon vs solid
-
-## Key Differences from .com
-
-| Feature | notes subdomain (Workshop) | .com (Gallery) |
-|---------|-----------------|----------------|
-| Purpose | Work in progress | Finished work |
-| Date format | Year headings + Oct · 20 | October 15, 2025 |
-| Reading time | Hidden | Shown |
-| Homepage | Simple intro | Feature-rich |
-| Newsletter | Not shown | Shown in footer |
-| Search indexing | **Blocked** | Allowed |
-| Favicon | **Outlined square** | Solid square |
-| Footer links | 4 links + Essays → | 5 links + Notes → |
-
-## Testing Checklist
-
-Before deploying:
-- [ ] Build succeeds: `hugo --minify`
-- [ ] No broken links
-- [ ] Dark mode works
-- [ ] Mobile responsive
-- [ ] **noindex = true in hugo.toml** (blocks search engines)
-- [ ] Robots meta tag present in HTML head
-- [ ] No newsletter form in footer
-- [ ] Footer links to .com (Essays →)
-- [ ] Date format uses year headings with month · day on lists
-- [ ] No reading time shown
+---
 
 ## Deployment
 
 **Platform:** Netlify
 
-**Build settings:**
-- Build command: `hugo --minify`
-- Publish directory: `public`
-- Hugo version: 0.151.0 (set in `netlify.toml` or environment)
+**Build:**
+- Trigger: Push to `master` branch
+- Command: `hugo --minify`
+- Publish directory: `public/`
+- Hugo version: 0.151.0 (set in `netlify.toml`)
 
-**Custom domain:** notes.shawnyeager.com
+**Verification checklist:**
+- [ ] Build succeeds
+- [ ] No broken links
+- [ ] Dark mode works
+- [ ] Mobile responsive
+- [ ] **noindex = true in hugo.toml** ⚠️
+- [ ] Robots meta tag in HTML head ⚠️
+- [ ] No newsletter form in footer
+- [ ] Footer links to .com (Essays →)
+- [ ] Date format: year headings with month · day
+- [ ] No reading time shown
+- [ ] Outlined orange favicon
 
-**Deploy:**
-```bash
-git push origin master
-# Netlify automatically builds and deploys
+---
+
+## Content Structure
+
+```
+content/
+├── notes/              # Main content (title, date, topics)
+└── about.md            # About The Workshop
 ```
 
-**Post-deploy verification:**
-1. View page source and verify robots meta tag: `<meta name="robots" content="noindex, nofollow">`
-2. Confirm no newsletter form appears
-3. Check date format uses year headings with Oct · 20 format on lists
+---
 
-## Related Repositories
+## Key Differences from .com
 
-- **tangerine-theme**: Shared theme module
-  - `github.com/shawnyeager/tangerine-theme`
-  - Contains layouts, CSS, partials
+| Feature | .notes (Workshop) | .com (Gallery) |
+|---------|-------------------|----------------|
+| Purpose | Work in progress | Finished work |
+| Search indexing | **Blocked (noindex)** | Allowed |
+| Favicon | Outlined square | Solid square |
+| Date format | Oct · 20 | October 15, 2025 |
+| Reading time | Hidden | Shown |
+| Newsletter | Not shown | Shown in footer |
+| Homepage | Simple intro | Feature-rich |
 
-- **shawnyeager-com**: The Gallery (professional site)
-  - `github.com/shawnyeager/shawnyeager-com`
-  - Sister site for finished essays
+---
 
-## Archived Monorepo
+## Critical Constraints
 
-Original development happened in: `~/Work/hugo-sites-project`
+1. **Never commit `public/` directory** - Build artifact (in `.gitignore`)
+2. **Keep noindex = true** ⚠️ - Search engine blocking is core to this site's purpose
+3. **Design tokens only** - Never hardcode CSS values
+4. **Minimal frontmatter** - Notes don't need descriptions (unlike essays)
 
-Contains:
-- Design system specification: `docs/design-system-specification.md`
-- HTML mockups: `docs/shawnyeager-org-mockup.html`
-- Original templates and CSS
-- Full project history
-
-**Reference for:** Design decisions, mockups, specifications
+---
 
 ## Philosophy: The Workshop
 
 This site embodies "building in public" and "thinking in public":
 
-- **No perfection required**: Notes can be rough, incomplete, contradictory
-- **Discoverable but not promoted**: Findable via direct link, but not in search
-- **Low friction**: Minimal frontmatter, simple structure, quick to publish
-- **Outlined favicon**: Visual metaphor for "work in progress" vs .com's "finished work"
+- **No perfection required** - Notes can be rough, incomplete, contradictory
+- **Discoverable but not promoted** - Findable via direct link, but not in search
+- **Low friction** - Minimal frontmatter, simple structure, quick to publish
+- **Outlined favicon** - Visual metaphor for "work in progress"
 
-The Gallery (.com) is where ideas graduate to after they've been refined here in The Workshop (notes subdomain).
+The Gallery (.com) is where ideas graduate to after they've been refined here in The Workshop.
 
-## Notes
+---
 
-- Never commit `public/` directory (in `.gitignore`)
-- No analytics needed (this is the workshop)
-- Outlined orange favicon differentiates from .com's solid favicon
-- `noindex` parameter is critical - always verify meta tag after deployment
-- Feel free to be messy here - that's the point
+## Related Sites
+
+- **shawnyeager.com** - The Gallery (finished essays)
