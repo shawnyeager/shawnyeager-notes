@@ -1,3 +1,18 @@
+{{/*
+Purpose: Homepage for shawnyeager-notes - The Workshop
+
+Features:
+- Intro message explaining site purpose
+- Recent 10 notes listing
+- Link to full archive
+- Draft filtering in production
+
+Important Notes:
+- Overrides theme default index.html
+- Date format: "Jan · 02" (month · day)
+- No bio or complex homepage layout (simpler than .com)
+*/}}
+
 {{ define "main" }}
 <div class="notes-homepage-intro">
     This is my workshop. Notes, observations, and half-formed ideas. <a href="{{ "about" | relURL }}">More about this site <span aria-hidden="true">→</span></a>

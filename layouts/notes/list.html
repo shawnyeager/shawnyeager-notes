@@ -1,3 +1,20 @@
+{{/*
+Purpose: Notes listing page with year-based grouping
+
+Features:
+- Page title via page-title.html partial (hidden by default)
+- Year headings for chronological organization
+- Paginated notes list
+- Draft filtering in production
+- Pagination controls
+
+Important Notes:
+- Overrides theme default list.html for notes
+- Date format: "Jan · 02" (month · day)
+- Year headings inserted dynamically when year changes
+- Pagination configured in hugo.toml (pagerSize)
+*/}}
+
 {{ define "main" }}
     <!-- Page Title (smart visibility: notes section listing hides title) -->
     {{ partial "page-title.html" . }}
