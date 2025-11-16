@@ -1,0 +1,68 @@
+# Sveltia CMS Configuration for notes.shawnyeager.com
+# https://github.com/sveltia/sveltia-cms
+
+backend:
+  name: github
+  repo: shawnyeager/shawnyeager-notes
+  branch: master
+  # For local development: backend.name: git-gateway
+
+# Publish mode - editorial workflow enables draft/review/publish
+publish_mode: simple
+
+# Media files
+media_folder: "static/images"
+public_folder: "/images"
+
+# Collections
+collections:
+  # Notes - main content type
+  - name: "notes"
+    label: "Notes"
+    label_singular: "Note"
+    folder: "content/notes"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    view_filters:
+      - label: "Drafts"
+        field: draft
+        pattern: true
+      - label: "Published"
+        field: draft
+        pattern: false
+    view_groups:
+      - label: "Draft Status"
+        field: draft
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: true}
+      - {label: "Slug", name: "slug", widget: "string", required: false, hint: "URL path (optional - defaults to title)"}
+      - {label: "Topics", name: "topics", widget: "list", required: false, hint: "e.g., bitcoin, sales, strategy"}
+      - {label: "Tags", name: "tags", widget: "list", required: false, hint: "e.g., go-to-market, enterprise"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false, required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: true}
+
+  # Pages - static pages (homepage, about)
+  - name: "pages"
+    label: "Pages"
+    label_singular: "Page"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+      - label: "About"
+        name: "about"
+        file: "content/about.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Date", name: "date", widget: "datetime"}
+          - {label: "Draft", name: "draft", widget: "boolean", default: false}
+          - {label: "Body", name: "body", widget: "markdown"}
