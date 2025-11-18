@@ -1,0 +1,22 @@
+{{/*
+Purpose: Default single page template for non-note pages
+
+Features:
+- Page title via page-title.html partial
+- Simple content wrapper
+
+Important Notes:
+- Overrides theme default single.html
+- Used for utility pages like /about
+- notes/single.html takes precedence for note content
+*/}}
+
+{{ define "main" }}
+    <!-- Page Title (smart visibility: show_title frontmatter flag controls display) -->
+    {{ partial "page-title.html" . }}
+
+    <!-- Page Content -->
+    <article class="page-body">
+        {{ .Content }}
+    </article>
+{{ end }}

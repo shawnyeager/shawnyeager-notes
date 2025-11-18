@@ -1,0 +1,44 @@
+{{/*
+Purpose: Homepage for shawnyeager-notes - The Workshop
+
+Features:
+- Intro message explaining site purpose
+- Recent 10 notes listing
+- Link to full archive
+- Draft filtering in production
+
+Important Notes:
+- Overrides theme default index.html
+- Date format: "Jan · 02" (month · day)
+- No bio or complex homepage layout (simpler than .com)
+*/}}
+
+{{ define "main" }}
+<div class="notes-homepage-intro">
+    {{ .Content }}
+</div>
+
+{{ $notes := where .Site.RegularPages "Type" "notes" }}
+{{ if not hugo.IsServer }}
+{{ $notes = where $notes "Draft" false }}
+{{ end }}
+{{ if $notes }}
+<section class="recent-notes">
+    <h2 class="section-label-small">Recent Notes</h2>
+    {{ range first 10 $notes }}
+        <article class="note-item">
+            <a href="{{ .RelPermalink }}">
+                <time datetime="{{ .Date.Format "2006-01-02" }}" class="note-date">{{ .Date.Format "Jan · 02" }}</time>
+                <span class="note-title">{{ .Title }}</span>
+            </a>
+        </article>
+    {{ end }}
+    <p><a href="{{ "notes" | relURL }}" class="cta-link">All notes <span aria-hidden="true">→</span></a></p>
+</section>
+{{ else }}
+<section class="recent-notes">
+    <h2 class="section-label-small">Recent Notes</h2>
+    <p>No notes published yet.</p>
+</section>
+{{ end }}
+{{ end }}

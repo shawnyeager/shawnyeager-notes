@@ -1,0 +1,5 @@
+# Netlify redirect rules
+# Redirect all traffic from old shawnyeager.org domain to notes.shawnyeager.com subdomain
+
+# 301 permanent redirect - preserves path and query parameters
+https://shawnyeager.org/*  https://notes.shawnyeager.com/:splat  301!
