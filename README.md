@@ -11,8 +11,6 @@ This is the workshop side of a two-site system:
 - **notes.shawnyeager.com** (this site) — Rough notes and explorations
 - **[shawnyeager.com](https://shawnyeager.com)** — Finished essays
 
-Content here is intentionally not indexed by search engines. It's findable if you know about it, but not promoted.
-
 ## Quick Start
 
 ```bash
@@ -41,7 +39,7 @@ Key parameters in `hugo.toml`:
 [params]
   content_type = "notes"
   favicon_style = "outlined"      # Outlined square (vs .com's solid)
-  noindex = true                  # Block search engines via meta tag
+  noindex = false                 # Optional: set to true to block search engines
   show_email_signup = false       # No newsletter form
 ```
 
@@ -109,7 +107,7 @@ git push
 
 - **Year-grouped dates**: Year headings with `Oct · 20` format on lists, full dates on single pages
 - **No reading time**: Hidden for workshop aesthetic
-- **Search blocking**: `noindex` meta tag (controlled via hugo.toml)
+- **Optional search blocking**: `noindex` parameter available in hugo.toml (currently off)
 - **Outlined favicon**: Visual metaphor for work-in-progress
 - **Clean permalinks**: `/note-slug/` (no `/notes/notes/` duplication)
 - **Smart page titles**: Semantic H1 with visibility controls (see CLAUDE.md for details)
