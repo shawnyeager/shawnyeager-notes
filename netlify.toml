@@ -16,3 +16,8 @@
 
 [context.branch-deploy]
   command = "./scripts/netlify-build.sh -b $DEPLOY_PRIME_URL"
+
+[[headers]]
+for = "/.well-known/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
