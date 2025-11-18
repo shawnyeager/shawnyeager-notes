@@ -27,29 +27,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  link-check:
-    uses: shawnyeager/shared-workflows/.github/workflows/hugo-link-checker.yml@master
+  quality-check:
+    uses: shawnyeager/shared-workflows/.github/workflows/complete-content-quality.yml@master
     permissions:
       issues: write
-
-  markdown-lint:
-    uses: shawnyeager/shared-workflows/.github/workflows/hugo-markdown-linter.yml@master
     with:
-      content_path: 'content/notes/'
-
-  content-validator:
-    uses: shawnyeager/shared-workflows/.github/workflows/hugo-content-validator.yml@master
-    with:
-      content_path: 'content/notes'
-      content_type: 'notes'
-      require_description: false
-
-  module-validator:
-    uses: shawnyeager/shared-workflows/.github/workflows/hugo-module-validator.yml@master
-    with:
-      module_path: 'github.com/shawnyeager/tangerine-theme'
-
-  image-validator:
-    uses: shawnyeager/shared-workflows/.github/workflows/hugo-image-validator.yml@master
-    with:
-      content_path: 'content/'
+      site_type: 'notes'
