@@ -20,7 +20,16 @@ title = "Shawn's Notes"
 [permalinks]
   notes = "/:slug/"
 
+# Output formats
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+
 # RSS configuration
+[outputFormats.RSS]
+  mediaType = "application/rss+xml"
+  baseName = "feed"
+
 [services.rss]
   limit = 20
 
