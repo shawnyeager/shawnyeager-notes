@@ -49,13 +49,18 @@ Theme tokens defined in tangerine-theme. If a value doesn't have a token, ask be
 
 ## Site Configuration
 
-Key parameters in `hugo.toml`:
+**NOTE:** Some params are inherited from `tangerine-theme/hugo.toml`:
+- `copyright`, `nostr`, `github`, `twitter_handle`, `params.author`
+- Hugo automatically merges theme params with site params
+- Site params override theme params when both define the same key
+
+Key site-specific parameters in `hugo.toml`:
 
 ```toml
 [params]
   content_type = "notes"
   favicon_style = "outlined"      # Outlined square (vs .com's solid)
-  noindex = true                  # ⚠️ CRITICAL: Block search engines
+  noindex = false                 # Allow search indexing
   show_email_signup = false       # No newsletter form
   show_read_time = false          # Hide reading time
   secondary_site_url = "https://shawnyeager.com"

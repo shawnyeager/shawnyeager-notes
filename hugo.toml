@@ -1,14 +1,11 @@
 # Hugo Configuration for notes.shawnyeager.com
 # Personal notes site - The Workshop (building in public)
-# Version 1.0 - October 2025
+#
+# Shared configuration inherited from tangerine-theme/hugo.toml
+# This file contains only site-specific overrides
 
 baseURL = "https://notes.shawnyeager.com/"
-languageCode = "en-us"
 title = "Shawn's Notes"
-defaultContentLanguage = "en"
-
-# Enable emoji support
-enableEmoji = true
 
 # Hugo Module - Theme
 [module]
@@ -20,49 +17,15 @@ enableEmoji = true
   pagerSize = 25
 
 # Permalinks - clean URLs without dates
-# Use slug from frontmatter (falls back to filename if slug not set)
 [permalinks]
   notes = "/:slug/"
 
-# Taxonomies - matches frontmatter usage (topics: [...])
-[taxonomies]
-  topic = "topics"
-  tag = "tags"
-
-# Output formats - Generate RSS but don't link to it in footer
-[outputs]
-  home = ["HTML", "RSS"]
-  section = ["HTML"]
-
 # RSS configuration
-[outputFormats.RSS]
-  mediaType = "application/rss+xml"
-  baseName = "feed"
-
 [services.rss]
   limit = 20
 
-# Sitemap configuration
-[sitemap]
-  changefreq = "weekly"
-  priority = 0.5
-
-# Exclude tags taxonomy from sitemap via cascade
-[[cascade]]
-  _target.kind = "term"
-  _target.path = "/tags"
-  [cascade.sitemap]
-    disable = true
-
-[[cascade]]
-  _target.kind = "taxonomy"
-  _target.path = "/tags/**"
-  [cascade.sitemap]
-    disable = true
-
-# Site parameters
+# Site-specific parameters
 [params]
-  copyright = "Copyright © 2025, Shawn Yeager"
   description = "Building in public – notes and explorations"
 
   # Open Graph image for social sharing (1200x630px)
@@ -77,7 +40,7 @@ enableEmoji = true
   # Analytics
   plausible_script_id = "pa-oiG9OCidDN7DUXrC9X889"  # Plausible analytics
 
-  # Plausible event tracking configuration (minimal for notes site, using dotted key notation)
+  # Plausible event tracking configuration (minimal for notes site)
   plausible_events.contact_email = "Email+Contact"
   plausible_events.cross_site_nav = "Cross-Site+Navigation"
 
@@ -87,38 +50,42 @@ enableEmoji = true
   # Reading time display
   show_read_time = false          # Hide reading time on notes (work-in-progress)
 
-  # Social/contact links
-  nostr = "https://primal.net/shawn"
-  github = "https://github.com/shawnyeager"
-  twitter_handle = "shawnyeager"  # Without @ symbol, used for Twitter Card attribution
-
   # Secondary site link (back to .com)
   secondary_site_url = "https://shawnyeager.com"
   secondary_site_name = "Essays"
 
-  # Author information (used in RSS feeds and structured data)
-  [params.author]
-    name = "Shawn Yeager"
-    email = "hello@shawnyeager.com"
-    jobTitle = "Bitcoin Go-to-Market Leader"
+# Note: Hugo only merges [params] and [[menu.*]] from theme modules
+# All other config must be defined in site files
 
-# Menu configuration
-[[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 1
+# Language settings
+languageCode = "en-us"
+defaultContentLanguage = "en"
+enableEmoji = true
 
-[[menu.main]]
-  name = "Notes"
-  url = "/notes/"
-  weight = 2
+# Taxonomies
+[taxonomies]
+  topic = "topics"
+  tag = "tags"
 
-[[menu.main]]
-  name = "About"
-  url = "/about/"
-  weight = 3
+# Exclude tags taxonomy from sitemap via cascade
+[[cascade]]
+  _target.kind = "term"
+  _target.path = "/tags"
+  [cascade.sitemap]
+    disable = true
 
-# Image processing (requires Hugo Extended)
+[[cascade]]
+  _target.kind = "taxonomy"
+  _target.path = "/tags/**"
+  [cascade.sitemap]
+    disable = true
+
+# Sitemap configuration
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+# Image processing
 [imaging]
   quality = 85
   resampleFilter = "Lanczos"
@@ -126,21 +93,21 @@ enableEmoji = true
 
 [imaging.exif]
   disableDate = false
-  disableLatLong = true           # Remove location data from images
+  disableLatLong = true
 
 # Markdown configuration
 [markup.goldmark.renderer]
-unsafe = true                # Allow HTML in markdown
+  unsafe = true
 
 [markup.goldmark.extensions.extras.mark]
-enable = true
+  enable = true
 
 [markup.highlight]
-style = "monokailight"
-lineNos = false
-lineNumbersInTable = false
+  style = "monokailight"
+  lineNos = false
+  lineNumbersInTable = false
 
-# Privacy configuration
+# Privacy
 [privacy]
   [privacy.youtube]
     privacyEnhanced = true
@@ -153,7 +120,7 @@ lineNumbersInTable = false
   [security.funcs]
     getenv = ['^HUGO_', '^CI$']
 
-# Build configuration
+# Build
 [build]
   writeStats = false
 
@@ -171,3 +138,19 @@ lineNumbersInTable = false
   [caches.assets]
     dir = ":cacheDir/:project"
     maxAge = -1
+
+# Menu configuration
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Notes"
+  url = "/notes/"
+  weight = 2
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 3
