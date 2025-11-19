@@ -18,20 +18,22 @@ My hunch: CFOs are looking at these events differently now. Not "could this happ
 
 The dependency is the vulnerability.
 
-Lightning didn't go down during the AWS outage. It couldn't—there's no AWS to fail. No Cloudflare to crash. No central coordinator whose DNS can cascade. Lightning routes through independent nodes. One fails, you route around it. Nostr relay dies? Connect to a different relay. No coordinator means nothing to coordinate, nothing to fail.
+Lightning didn't go down during the AWS outage. It couldn't---there's no AWS to fail. No Cloudflare to crash. No central coordinator whose DNS can cascade. Lightning routes through independent nodes. One fails, you route around it. Nostr relay dies? Connect to a different relay. No coordinator means nothing to coordinate, nothing to fail.
 
-That's proven. That's how it worked during AWS. That's how it worked yesterday.
+That's how it worked during AWS. That's how it worked yesterday.
 
-The architecture delivers protocol-level redundancy. No single point of failure. Real resilience during centralized failures. But the pitch leads with censorship resistance, sovereignty, freedom from government control.
+The architecture delivers protocol-level redundancy. No single point of failure. Real resilience during centralized failures. But the pitch typically leads with censorship resistance, sovereignty, freedom from government control.
 
-My guess: after yesterday, some enterprises are asking "how do we reduce infrastructure dependency risk?" That's a risk management question. It has budget. It gets put in RFPs.
+After yesterday, enterprises are asking "how do we reduce infrastructure dependency risk?" That's a risk management question. It has budget. It gets put in RFPs.
 
 You translate architectural advantages into enterprise risk management language.
 
-The reframe:
+The new frame:
 
 - "We're decentralized" → "We eliminate coordinator dependencies"
 - "Censorship-resistant" → "Protocol-level redundancy"
 - "Freedom technology" → "No single point of failure"
 
-Same architecture. Different frame. Infrastructure risk is fresh. Seems like the moment to test this.
+Same architecture. Different frame.
+
+Infrastructure risk is fresh. Enterprise pain is real. Now is the moment to test new messaging.
