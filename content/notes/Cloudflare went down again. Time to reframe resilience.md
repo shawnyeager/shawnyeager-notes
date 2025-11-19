@@ -8,11 +8,11 @@ slug: reframe-resilience
 topics: [bitcoin, freedom-tech, go-to-market]
 draft: false
 ---
-Cloudflare crashed yesterday. X, ChatGPT, Uber---all down. Even DownDetector went offline because it runs on Cloudflare. 
+Cloudflare crashed yesterday. X, ChatGPT, Uber---all down. Even DownDetector went offline because it runs on Cloudflare.
 
 One company, one bug, hundreds of services dark for hours. This happened 30 days after AWS took down half the internet for 15 hours.
 
-For years the trade-off seemed obvious: Centralized = reliable, proven, professional. Decentralized = slow, clunky, ideological. After two major outages in 30 days, I'm wondering if that still holds. 
+For years the trade-off seemed obvious: Centralized = reliable, proven, professional. Decentralized = slow, clunky, ideological. After two major outages in 30 days, I'm wondering if that still holds.
 
 My hunch: CFOs are looking at these events differently now. Not "could this happen?" but "what did this cost us?"
 
