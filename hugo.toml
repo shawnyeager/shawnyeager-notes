@@ -6,6 +6,7 @@
 
 baseURL = "https://notes.shawnyeager.com/"
 title = "Shawn's Notes"
+enableRobotsTXT = true
 
 # Hugo Module - Theme
 [module]
