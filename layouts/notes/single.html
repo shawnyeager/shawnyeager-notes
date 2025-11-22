@@ -15,7 +15,7 @@ description: "A brief summary of the note's main idea."
     </header>
 
     <div class="note-body">
-        {{ .Content }}
+        {{ .Content | safeHTML }}
     </div>
 
     <div class="note-back-link">

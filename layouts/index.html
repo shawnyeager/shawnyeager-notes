@@ -15,7 +15,7 @@ Important Notes:
 
 {{ define "main" }}
 <div class="notes-homepage-intro">
-    {{ .Content }}
+    {{ .Content | safeHTML }}
 </div>
 
 {{ $notes := where .Site.RegularPages "Type" "notes" }}
