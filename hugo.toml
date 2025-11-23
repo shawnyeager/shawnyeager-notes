@@ -5,7 +5,7 @@
 # This file contains only site-specific overrides
 
 baseURL = "https://notes.shawnyeager.com/"
-title = "Shawn's Notes"
+title = "Shawn Yeager's Notes - Thinking in Public"
 enableRobotsTXT = true
 
 # Hugo Module - Theme

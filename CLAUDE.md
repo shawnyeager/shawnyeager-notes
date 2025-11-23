@@ -8,7 +8,7 @@
 
 **The Workshop** — Rough drafts, half-formed ideas, observations, and notes.
 
-This is where I think in public. Content is intentionally **NOT indexed by search engines** - it's findable if you know about it, but not promoted.
+This is where I think in public. Content is **indexed by search engines but not actively promoted** - discoverable for those who find it organically.
 
 Sister site to **shawnyeager.com** (The Gallery) where polished essays live.
 
@@ -72,21 +72,23 @@ Key site-specific parameters in `hugo.toml`:
 
 ---
 
-## ⚠️ CRITICAL: Search Engine Blocking
+## Search Engine Indexing Policy
 
-**This site MUST remain blocked from search engines.**
+**This site allows search engine indexing (`noindex = false`).**
 
-The `noindex = true` parameter generates:
-```html
-<meta name="robots" content="noindex, nofollow">
-```
+Notes are discoverable through organic search but not actively promoted through SEO optimization, newsletters, or social sharing.
 
-**Always verify after deployment:**
-1. View page source
-2. Check for robots meta tag in `<head>`
-3. Confirm no newsletter form appears
+**Philosophy:**
+- Content is indexed and searchable (appears in search results)
+- No meta descriptions on notes (unlike essays on .com)
+- No newsletter signup (unlike .com)
+- No social promotion
+- Allows organic discovery while maintaining "work in progress" nature
 
-This ensures notes remain findable (via direct link) but not promoted (not in search results).
+**Verify after deployment:**
+1. No robots `noindex` meta tag in `<head>` (indexing allowed)
+2. No newsletter form in footer
+3. Minimal SEO optimization (no descriptions, keywords, etc.)
 
 ---
 
@@ -202,8 +204,8 @@ git diff go.mod | grep "replace"  # Must return nothing before committing
 - [ ] No broken links
 - [ ] Dark mode works
 - [ ] Mobile responsive
-- [ ] **noindex = true in hugo.toml** ⚠️
-- [ ] Robots meta tag in HTML head ⚠️
+- [ ] **noindex = false in hugo.toml** (indexing allowed)
+- [ ] No robots `noindex` meta tag in HTML head (indexing allowed)
 - [ ] No newsletter form in footer
 - [ ] Footer links to .com (Essays →)
 - [ ] Date format: year headings with month · day
@@ -227,7 +229,7 @@ content/
 | Feature | .notes (Workshop) | .com (Gallery) |
 |---------|-------------------|----------------|
 | Purpose | Work in progress | Finished work |
-| Search indexing | **Blocked (noindex)** | Allowed |
+| Search indexing | **Allowed (not promoted)** | Allowed (optimized) |
 | Favicon | Outlined square | Solid square |
 | Date format | Oct · 20 | October 15, 2025 |
 | Reading time | Hidden | Shown |
@@ -239,9 +241,10 @@ content/
 ## Critical Constraints
 
 1. **Never commit `public/` directory** - Build artifact (in `.gitignore`)
-2. **Keep noindex = true** ⚠️ - Search engine blocking is core to this site's purpose
+2. **Keep noindex = false** - Search indexing allowed but not promoted
 3. **Design tokens only** - Never hardcode CSS values
 4. **Minimal frontmatter** - Notes don't need descriptions (unlike essays)
+5. **No active SEO** - No descriptions, keywords, or social promotion
 
 ---
 
@@ -250,7 +253,7 @@ content/
 This site embodies "building in public" and "thinking in public":
 
 - **No perfection required** - Notes can be rough, incomplete, contradictory
-- **Discoverable but not promoted** - Findable via direct link, but not in search
+- **Discoverable but not promoted** - Indexed by search engines but no active SEO, social sharing, or newsletters
 - **Low friction** - Minimal frontmatter, simple structure, quick to publish
 - **Outlined favicon** - Visual metaphor for "work in progress"
 
