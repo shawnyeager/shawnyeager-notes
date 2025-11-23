@@ -1,3 +1,6 @@
 # Netlify redirect rules
+# Redirect shawnyeager.org root to notes homepage
+https://shawnyeager.org/  https://notes.shawnyeager.com/  301!
+
 # All old shawnyeager.org blog content is permanently removed (410 Gone)
-https://shawnyeager.org/*  https://notes.shawnyeager.com/gone  410!
+https://shawnyeager.org/*  /gone  410
