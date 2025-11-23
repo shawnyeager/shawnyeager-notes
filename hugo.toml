@@ -36,6 +36,7 @@ enableRobotsTXT = true
 
 # Site-specific parameters
 [params]
+  site_display_name = "Shawn's Notes"  # Clean display title (SEO title in title config above)
   description = "Building in public – notes and explorations"
 
   # Open Graph image for social sharing (1200x630px)
