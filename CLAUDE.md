@@ -19,6 +19,9 @@ Built with Hugo using the tangerine-theme module.
 ## Quick Start
 
 ```bash
+# Install git hooks (first time setup)
+./scripts/install-hooks.sh
+
 # Local development
 hugo server -D -p 1316
 
@@ -28,6 +31,8 @@ hugo new content/notes/note-slug.md
 # Build for production
 hugo --minify
 ```
+
+**Git Hooks:** This repo includes a pre-commit hook that blocks manual commits of go.mod theme updates. Theme updates must come via GitHub Actions workflow. If you freshly clone this repo, run `./scripts/install-hooks.sh` to install the hooks.
 
 ---
 
