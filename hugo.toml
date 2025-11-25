@@ -4,29 +4,33 @@
 # Shared configuration inherited from tangerine-theme/hugo.toml
 # This file contains only site-specific overrides
 
+# =============================================================================
+# CORE SETTINGS
+# =============================================================================
+
 baseURL = "https://notes.shawnyeager.com/"
 title = "Shawn Yeager's Notes | Thinking in Public"
+languageCode = "en-us"
+defaultContentLanguage = "en"
 enableRobotsTXT = true
+enableEmoji = true
 
-# Hugo Module - Theme
+# =============================================================================
+# HUGO MODULE
+# =============================================================================
+
 [module]
   [[module.imports]]
     path = "github.com/shawnyeager/tangerine-theme"
 
-# Pagination
-[pagination]
-  pagerSize = 25
+# =============================================================================
+# CONTENT DELIVERY
+# =============================================================================
 
-# Permalinks - clean URLs without dates
-[permalinks]
-  notes = "/:slug/"
-
-# Output formats
 [outputs]
   home = ["HTML", "RSS"]
   section = ["HTML"]
 
-# RSS configuration
 [outputFormats.RSS]
   mediaType = "application/rss+xml"
   baseName = "feed"
@@ -34,45 +38,76 @@ enableRobotsTXT = true
 [services.rss]
   limit = 15
 
-# Site-specific parameters
+[pagination]
+  pagerSize = 25
+
+[permalinks]
+  notes = "/:slug/"
+
+# =============================================================================
+# TAXONOMIES
+# =============================================================================
+
+[taxonomies]
+  topic = "topics"
+  tag = "tags"
+
+# =============================================================================
+# SEO & CRAWLING
+# =============================================================================
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[[cascade]]
+  _target.kind = "term"
+  _target.path = "/tags"
+  [cascade.sitemap]
+    disable = true
+
+[[cascade]]
+  _target.kind = "taxonomy"
+  _target.path = "/tags/**"
+  [cascade.sitemap]
+    disable = true
+
+# =============================================================================
+# SITE PARAMETERS
+# =============================================================================
+
 [params]
-  site_display_name = "Shawn's Notes"  # Clean display title (SEO title in title config above)
+  site_display_name = "Shawn's Notes"
   description = "Building in public – notes and explorations"
 
-  # Open Graph image for social sharing (1200x630px)
-  # Outlined orange rectangle distinguishes notes from essays
+  # Open Graph
   og_image = "/images/og-image.png"
-  og_type = "website"  # Default; overridden to "article" for individual notes
+  og_type = "website"
 
-  # Theme configuration
-  content_type = "notes"          # Content type for parameterized templates
-  favicon_style = "outlined"      # Favicon style: "solid" or "outlined"
-  noindex = false                 # Allow search engines (false = allow indexing)
+  # Theme
+  content_type = "notes"
+  favicon_style = "outlined"
+  noindex = false
 
-  # Analytics
-  plausible_script_id = "pa-oiG9OCidDN7DUXrC9X889"  # Plausible analytics
+  # Display
+  show_read_time = false
+  show_email_signup = false
 
-  # Plausible event tracking configuration (minimal for notes site)
-  plausible_events.contact_email = "Email+Contact"
-  plausible_events.cross_site_nav = "Cross-Site+Navigation"
-
-  # Email signup (footer)
-  show_email_signup = false       # No email signup on workshop site
-
-  # Reading time display
-  show_read_time = false          # Hide reading time on notes (work-in-progress)
-
-  # Secondary site link (back to .com)
+  # Cross-site
   secondary_site_url = "https://shawnyeager.com"
   secondary_site_name = "Essays"
 
-  # Copyright and social links
+  # Social
   copyright = "Copyright © 2025, Shawn Yeager"
   nostr = "https://primal.net/shawn"
   github = "https://github.com/shawnyeager"
-  twitter_handle = "shawnyeager"  # Without @ symbol, used for Twitter Card attribution
+  twitter_handle = "shawnyeager"
 
-# Author information (used in RSS feeds and structured data)
+  # Analytics
+  plausible_script_id = "pa-oiG9OCidDN7DUXrC9X889"
+  plausible_events.contact_email = "Email+Contact"
+  plausible_events.cross_site_nav = "Cross-Site+Navigation"
+
 [params.author]
   name = "Shawn Yeager"
   email = "hello@shawnyeager.com"
@@ -86,48 +121,10 @@ enableRobotsTXT = true
   nostr = "https://primal.net/shawn"
   podcast = "https://fountain.fm/show/Mk0fJte5vrfiDQ5RyCZd"
 
-# Note: Hugo only merges [params] and [[menu.*]] from theme modules
-# All other config must be defined in site files
+# =============================================================================
+# MARKUP
+# =============================================================================
 
-# Language settings
-languageCode = "en-us"
-defaultContentLanguage = "en"
-enableEmoji = true
-
-# Taxonomies
-[taxonomies]
-  topic = "topics"
-  tag = "tags"
-
-# Exclude tags taxonomy from sitemap via cascade
-[[cascade]]
-  _target.kind = "term"
-  _target.path = "/tags"
-  [cascade.sitemap]
-    disable = true
-
-[[cascade]]
-  _target.kind = "taxonomy"
-  _target.path = "/tags/**"
-  [cascade.sitemap]
-    disable = true
-
-# Sitemap configuration
-[sitemap]
-  changefreq = "weekly"
-  priority = 0.5
-
-# Image processing
-[imaging]
-  quality = 85
-  resampleFilter = "Lanczos"
-  anchor = "Smart"
-
-[imaging.exif]
-  disableDate = false
-  disableLatLong = true
-
-# Markdown configuration
 [markup.goldmark.renderer]
   unsafe = false
 
@@ -139,12 +136,27 @@ enableEmoji = true
   lineNos = false
   lineNumbersInTable = false
 
-# Privacy
+# =============================================================================
+# IMAGE PROCESSING
+# =============================================================================
+
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+  anchor = "Smart"
+
+[imaging.exif]
+  disableDate = false
+  disableLatLong = true
+
+# =============================================================================
+# PRIVACY & SECURITY
+# =============================================================================
+
 [privacy]
   [privacy.youtube]
     privacyEnhanced = true
 
-# Security
 [security]
   enableInlineShortcodes = false
   [security.exec]
@@ -152,11 +164,13 @@ enableEmoji = true
   [security.funcs]
     getenv = ['^HUGO_', '^CI$']
 
-# Build
+# =============================================================================
+# BUILD & CACHE
+# =============================================================================
+
 [build]
   writeStats = false
 
-# Cache configuration
 [caches]
   [caches.getjson]
     dir = ":cacheDir/:project"
@@ -171,7 +185,10 @@ enableEmoji = true
     dir = ":cacheDir/:project"
     maxAge = -1
 
-# Menu configuration
+# =============================================================================
+# MENU
+# =============================================================================
+
 [[menu.main]]
   name = "Home"
   url = "/"
