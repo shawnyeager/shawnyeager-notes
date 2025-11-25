@@ -47,7 +47,7 @@ Important Notes:
         <a href="{{ $paginator.Prev.URL }}" class="pagination-prev"><span aria-hidden="true">←</span> Newer</a>
         {{ end }}
         {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="pagination-next">Older <span aria-hidden="true">→</span></a>
+        <a href="{{ $paginator.Next.URL }}" class="pagination-next"><span class="link-text">Older</span> <span aria-hidden="true">→</span></a>
         {{ end }}
     </nav>
     {{ end }}
