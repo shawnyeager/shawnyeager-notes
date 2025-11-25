@@ -30,9 +30,9 @@ You translate architectural advantages into enterprise risk management language.
 
 The new frame:
 
-- "We're decentralized" ➤ "We eliminate coordinator dependencies"
-- "Censorship-resistant" ➤ "Protocol-level redundancy"
-- "Freedom technology" ➤ "No single point of failure"
+- "We're decentralized" ➔ "We eliminate coordinator dependencies"
+- "Censorship-resistant" ➔ "Protocol-level redundancy"
+- "Freedom technology" ➔ "No single point of failure"
 
 Same architecture. Different frame.
 
