@@ -96,6 +96,7 @@ enableEmoji = true
   # Cross-site
   secondary_site_url = "https://shawnyeager.com"
   secondary_site_name = "Essays"
+  v4v_url = "https://shawnyeager.com/v4v/"
 
   # Social
   copyright = "Copyright © 2025, Shawn Yeager"
